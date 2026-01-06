@@ -19,6 +19,8 @@
       --text: #2c2c2c;
       --text-light: #5a5a5a;
       --border: #d4d0c8;
+      --green: #2e7d32;
+      --green-light: #4caf50;
     }
 
     * {
@@ -92,13 +94,74 @@
       letter-spacing: 0.05em;
     }
 
+    /* Tab Navigation */
+    .tab-nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .tab-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+    }
+
+    .tab-btn {
+      padding: 1rem 2rem;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-light);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--navy);
+      background: var(--cream);
+    }
+
+    .tab-btn.active {
+      color: var(--navy);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--red);
+    }
+
+    .tab-btn span {
+      margin-right: 0.5rem;
+    }
+
+    /* Tab Content */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     /* Search Section */
     .search-section {
       background: white;
       border-bottom: 1px solid var(--border);
       padding: 1.5rem 2rem;
       position: sticky;
-      top: 0;
+      top: 52px;
       z-index: 100;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
@@ -167,7 +230,7 @@
     /* Sidebar / TOC */
     .sidebar {
       position: sticky;
-      top: 100px;
+      top: 160px;
       height: fit-content;
     }
 
@@ -352,6 +415,498 @@
       opacity: 0.5;
     }
 
+    /* ==================== QUIZ STYLES ==================== */
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Quiz Start Screen */
+    .quiz-start {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .quiz-start-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-start h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-start p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-option-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-option-label {
+      font-weight: 500;
+      color: var(--navy);
+      min-width: 100px;
+    }
+
+    .quiz-count-btns {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .quiz-count-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-count-btn:hover {
+      border-color: var(--navy);
+      background: var(--cream);
+    }
+
+    .quiz-count-btn.selected {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: white;
+    }
+
+    .quiz-mode-btns {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .quiz-mode-btn {
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-mode-btn:hover {
+      border-color: var(--navy);
+      background: var(--cream);
+    }
+
+    .quiz-mode-btn.selected {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: white;
+    }
+
+    .start-quiz-btn {
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-light) 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+    }
+
+    .start-quiz-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
+    }
+
+    /* Quiz Question Screen */
+    .quiz-question {
+      display: none;
+    }
+
+    .quiz-question.active {
+      display: block;
+      animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .quiz-progress {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-progress-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--cream-dark);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .quiz-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .quiz-progress-text {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      white-space: nowrap;
+    }
+
+    .quiz-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .quiz-category {
+      display: inline-block;
+      background: var(--cream);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .quiz-question-text {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--text);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--cream);
+      border-radius: 12px;
+      border-left: 4px solid var(--navy);
+    }
+
+    .quiz-choices {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quiz-choice {
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quiz-choice:hover:not(:disabled) {
+      border-color: var(--navy);
+      background: var(--cream);
+    }
+
+    .quiz-choice-marker {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--text-light);
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-choice:hover:not(:disabled) .quiz-choice-marker {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .quiz-choice.correct {
+      border-color: var(--green);
+      background: #e8f5e9;
+    }
+
+    .quiz-choice.correct .quiz-choice-marker {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    .quiz-choice.incorrect {
+      border-color: var(--red);
+      background: #ffebee;
+    }
+
+    .quiz-choice.incorrect .quiz-choice-marker {
+      background: var(--red);
+      border-color: var(--red);
+      color: white;
+    }
+
+    .quiz-choice:disabled {
+      cursor: default;
+    }
+
+    .quiz-feedback {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .quiz-feedback.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .quiz-feedback.correct {
+      background: #e8f5e9;
+      border: 1px solid var(--green);
+    }
+
+    .quiz-feedback.incorrect {
+      background: #ffebee;
+      border: 1px solid var(--red);
+    }
+
+    .quiz-feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-feedback.correct .quiz-feedback-header {
+      color: var(--green);
+    }
+
+    .quiz-feedback.incorrect .quiz-feedback-header {
+      color: var(--red);
+    }
+
+    .quiz-next-btn {
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: none;
+    }
+
+    .quiz-next-btn.show {
+      display: inline-block;
+    }
+
+    .quiz-next-btn:hover {
+      background: var(--navy-light);
+    }
+
+    /* Quiz Result Screen */
+    .quiz-result {
+      display: none;
+      text-align: center;
+    }
+
+    .quiz-result.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .quiz-result-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .quiz-result-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-result h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-score {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-score-num {
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .quiz-score-total {
+      font-size: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .quiz-score-percent {
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-result-message {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--cream);
+      border-radius: 10px;
+    }
+
+    .quiz-result-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-retry-btn {
+      padding: 1rem 2rem;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-retry-btn:hover {
+      background: var(--navy-light);
+    }
+
+    .quiz-review-btn {
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .quiz-review-btn:hover {
+      background: var(--cream);
+    }
+
+    /* Quiz Review */
+    .quiz-review {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    .quiz-review.show {
+      display: block;
+    }
+
+    .quiz-review h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .quiz-review-item {
+      background: white;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .quiz-review-item.correct {
+      border-left: 4px solid var(--green);
+    }
+
+    .quiz-review-item.incorrect {
+      border-left: 4px solid var(--red);
+    }
+
+    .quiz-review-q {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-review-a {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .quiz-review-your {
+      font-size: 0.85rem;
+      color: var(--red);
+      margin-top: 0.25rem;
+    }
+
     /* Footer */
     footer {
       background: var(--navy);
@@ -370,7 +925,7 @@
     @media (max-width: 600px) {
       header { padding: 2rem 1rem 1.5rem; }
       h1 { font-size: 1.8rem; }
-      .search-section { padding: 1rem; }
+      .search-section { padding: 1rem; top: 52px; }
       .main-container { padding: 1rem; }
       .sidebar { 
         position: static;
@@ -380,6 +935,10 @@
         max-height: 200px;
         overflow-y: auto;
       }
+      .quiz-container { padding: 1rem; }
+      .quiz-start, .quiz-card, .quiz-result-card { padding: 1.5rem; }
+      .quiz-option-group { flex-direction: column; gap: 0.5rem; }
+      .tab-btn { padding: 0.75rem 1rem; font-size: 0.9rem; }
     }
 
     /* Scroll behavior */
@@ -396,24 +955,115 @@
     </div>
   </header>
 
-  <div class="search-section">
-    <div class="search-container">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="用語を検索...（例：春闘、専従、ベア）">
+  <!-- Tab Navigation -->
+  <nav class="tab-nav">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active" data-tab="glossary"><span>📖</span>用語集</button>
+      <button class="tab-btn" data-tab="quiz"><span>📝</span>クイズ</button>
+    </div>
+  </nav>
+
+  <!-- Glossary Tab -->
+  <div id="glossary-tab" class="tab-content active">
+    <div class="search-section">
+      <div class="search-container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="用語を検索...（例：春闘、専従、ベア）">
+        </div>
+        <div class="search-stats" id="searchStats">全 <span id="totalCount">0</span> 件の用語</div>
       </div>
-      <div class="search-stats" id="searchStats">全 <span id="totalCount">0</span> 件の用語</div>
+    </div>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <nav class="toc">
+          <h2>📑 目次</h2>
+          <ul class="toc-list" id="tocList"></ul>
+        </nav>
+      </aside>
+
+      <main class="content" id="content"></main>
     </div>
   </div>
 
-  <div class="main-container">
-    <aside class="sidebar">
-      <nav class="toc">
-        <h2>📑 目次</h2>
-        <ul class="toc-list" id="tocList"></ul>
-      </nav>
-    </aside>
+  <!-- Quiz Tab -->
+  <div id="quiz-tab" class="tab-content">
+    <div class="quiz-container">
+      <!-- Start Screen -->
+      <div class="quiz-start" id="quizStart">
+        <div class="quiz-start-icon">📝</div>
+        <h2>労働組合用語クイズ</h2>
+        <p>解説文から正しい用語を選ぶクイズです。<br>問題数とモードを選んでスタート！</p>
+        
+        <div class="quiz-options">
+          <div class="quiz-option-group">
+            <span class="quiz-option-label">問題数</span>
+            <div class="quiz-count-btns">
+              <button class="quiz-count-btn selected" data-count="10">10問</button>
+              <button class="quiz-count-btn" data-count="15">15問</button>
+              <button class="quiz-count-btn" data-count="20">20問</button>
+            </div>
+          </div>
+          
+          <div class="quiz-option-group">
+            <span class="quiz-option-label">出題モード</span>
+            <div class="quiz-mode-btns">
+              <button class="quiz-mode-btn selected" data-mode="random">ランダム</button>
+              <button class="quiz-mode-btn" data-mode="new">追加用語のみ</button>
+            </div>
+          </div>
+        </div>
+        
+        <button class="start-quiz-btn" id="startQuizBtn">クイズスタート！</button>
+      </div>
 
-    <main class="content" id="content"></main>
+      <!-- Question Screen -->
+      <div class="quiz-question" id="quizQuestion">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="progressFill"></div>
+          </div>
+          <span class="quiz-progress-text" id="progressText">1 / 10</span>
+        </div>
+
+        <div class="quiz-card">
+          <span class="quiz-category" id="quizCategory"></span>
+          <div class="quiz-question-text" id="questionText"></div>
+          <div class="quiz-choices" id="quizChoices"></div>
+          
+          <div class="quiz-feedback" id="quizFeedback">
+            <div class="quiz-feedback-header" id="feedbackHeader"></div>
+            <div class="quiz-feedback-detail" id="feedbackDetail"></div>
+          </div>
+          
+          <button class="quiz-next-btn" id="nextBtn">次の問題へ →</button>
+        </div>
+      </div>
+
+      <!-- Result Screen -->
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-result-card">
+          <div class="quiz-result-icon" id="resultIcon">🎉</div>
+          <h2>クイズ終了！</h2>
+          <div class="quiz-score">
+            <span class="quiz-score-num" id="scoreNum">0</span>
+            <span class="quiz-score-total">/ <span id="scoreTotal">10</span></span>
+          </div>
+          <div class="quiz-score-percent" id="scorePercent">0%</div>
+          <div class="quiz-result-message" id="resultMessage"></div>
+          
+          <div class="quiz-result-btns">
+            <button class="quiz-retry-btn" id="retryBtn">もう一度挑戦</button>
+            <button class="quiz-review-btn" id="reviewBtn">解答を確認</button>
+          </div>
+        </div>
+
+        <div class="quiz-review" id="quizReview">
+          <h3>📋 解答一覧</h3>
+          <div id="reviewList"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -421,7 +1071,7 @@
   </footer>
 
   <script>
-    // 用語データ（既存 + 追加用語）
+    // 用語データ
     const glossaryData = [
       // 組織構造
       { category: "組織構造", term: "単組", reading: "たんそ", definition: "企業単位の労働組合。TUNAGの主な契約主体。意思決定が早い。", isNew: false },
@@ -565,17 +1215,15 @@
       "政治・背景", "文化・慣習"
     ];
 
-    // DOM要素
+    // ========== GLOSSARY FUNCTIONS ==========
     const searchInput = document.getElementById('searchInput');
     const totalCount = document.getElementById('totalCount');
     const searchStats = document.getElementById('searchStats');
     const tocList = document.getElementById('tocList');
     const content = document.getElementById('content');
 
-    // 初期表示
     totalCount.textContent = glossaryData.length;
 
-    // 目次を生成
     function generateTOC(data) {
       const categoryCounts = {};
       data.forEach(item => {
@@ -594,7 +1242,6 @@
         `).join('');
     }
 
-    // コンテンツを生成
     function generateContent(data, searchTerm = '') {
       const grouped = {};
       data.forEach(item => {
@@ -634,7 +1281,6 @@
         `).join('');
     }
 
-    // テキストハイライト
     function highlightText(text, term) {
       if (!term) return text;
       const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
@@ -645,7 +1291,6 @@
       return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // 検索機能
     function search(term) {
       const normalizedTerm = term.toLowerCase().trim();
       
@@ -667,12 +1312,10 @@
       searchStats.innerHTML = `「${term}」の検索結果: <strong>${filtered.length}</strong> 件`;
     }
 
-    // イベントリスナー
     searchInput.addEventListener('input', (e) => {
       search(e.target.value);
     });
 
-    // 目次クリックでアクティブ状態を更新
     tocList.addEventListener('click', (e) => {
       const link = e.target.closest('.toc-link');
       if (link) {
@@ -681,7 +1324,6 @@
       }
     });
 
-    // スクロールで目次のアクティブ状態を更新
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -693,16 +1335,274 @@
       });
     }, { rootMargin: '-100px 0px -70% 0px' });
 
-    // 初期化
     generateTOC(glossaryData);
     generateContent(glossaryData);
 
-    // セクションを監視
     setTimeout(() => {
       document.querySelectorAll('.category-section').forEach(section => {
         observer.observe(section);
       });
     }, 100);
+
+    // ========== TAB SWITCHING ==========
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        tabContents.forEach(c => c.classList.remove('active'));
+        document.getElementById(`${tab}-tab`).classList.add('active');
+      });
+    });
+
+    // ========== QUIZ FUNCTIONS ==========
+    let quizState = {
+      questions: [],
+      currentIndex: 0,
+      score: 0,
+      answers: [],
+      questionCount: 10,
+      mode: 'random'
+    };
+
+    // Quiz UI Elements
+    const quizStart = document.getElementById('quizStart');
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizResult = document.getElementById('quizResult');
+    const startQuizBtn = document.getElementById('startQuizBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const reviewBtn = document.getElementById('reviewBtn');
+
+    // Question count selection
+    document.querySelectorAll('.quiz-count-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.quiz-count-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        quizState.questionCount = parseInt(btn.dataset.count);
+      });
+    });
+
+    // Mode selection
+    document.querySelectorAll('.quiz-mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.quiz-mode-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        quizState.mode = btn.dataset.mode;
+      });
+    });
+
+    // Shuffle array
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Generate quiz questions
+    function generateQuestions() {
+      let pool = quizState.mode === 'new' 
+        ? glossaryData.filter(item => item.isNew)
+        : glossaryData;
+      
+      const shuffled = shuffle(pool);
+      const selected = shuffled.slice(0, Math.min(quizState.questionCount, shuffled.length));
+      
+      return selected.map(item => {
+        // Get wrong choices from other terms
+        const wrongChoices = shuffle(
+          glossaryData
+            .filter(other => other.term !== item.term)
+            .map(other => other.term)
+        ).slice(0, 3);
+        
+        const choices = shuffle([item.term, ...wrongChoices]);
+        
+        return {
+          question: item.definition,
+          correctAnswer: item.term,
+          choices: choices,
+          category: item.category,
+          reading: item.reading
+        };
+      });
+    }
+
+    // Start quiz
+    function startQuiz() {
+      quizState.questions = generateQuestions();
+      quizState.currentIndex = 0;
+      quizState.score = 0;
+      quizState.answers = [];
+      
+      quizStart.style.display = 'none';
+      quizResult.classList.remove('active');
+      quizQuestion.classList.add('active');
+      document.getElementById('quizReview').classList.remove('show');
+      
+      showQuestion();
+    }
+
+    // Show current question
+    function showQuestion() {
+      const q = quizState.questions[quizState.currentIndex];
+      const total = quizState.questions.length;
+      
+      // Update progress
+      document.getElementById('progressFill').style.width = `${((quizState.currentIndex + 1) / total) * 100}%`;
+      document.getElementById('progressText').textContent = `${quizState.currentIndex + 1} / ${total}`;
+      
+      // Update question
+      document.getElementById('quizCategory').textContent = `${categoryIcons[q.category]} ${q.category}`;
+      document.getElementById('questionText').textContent = q.question;
+      
+      // Update choices
+      const choicesHtml = q.choices.map((choice, index) => `
+        <button class="quiz-choice" data-choice="${choice}">
+          <span class="quiz-choice-marker">${['A', 'B', 'C', 'D'][index]}</span>
+          <span>${choice}</span>
+        </button>
+      `).join('');
+      
+      document.getElementById('quizChoices').innerHTML = choicesHtml;
+      
+      // Reset feedback
+      document.getElementById('quizFeedback').className = 'quiz-feedback';
+      nextBtn.classList.remove('show');
+      
+      // Add choice listeners
+      document.querySelectorAll('.quiz-choice').forEach(btn => {
+        btn.addEventListener('click', () => handleAnswer(btn.dataset.choice));
+      });
+    }
+
+    // Handle answer selection
+    function handleAnswer(selected) {
+      const q = quizState.questions[quizState.currentIndex];
+      const isCorrect = selected === q.correctAnswer;
+      
+      if (isCorrect) quizState.score++;
+      
+      quizState.answers.push({
+        question: q.question,
+        correctAnswer: q.correctAnswer,
+        userAnswer: selected,
+        isCorrect: isCorrect
+      });
+      
+      // Disable all choices
+      document.querySelectorAll('.quiz-choice').forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.choice === q.correctAnswer) {
+          btn.classList.add('correct');
+        } else if (btn.dataset.choice === selected && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      // Show feedback
+      const feedback = document.getElementById('quizFeedback');
+      feedback.className = `quiz-feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+      document.getElementById('feedbackHeader').innerHTML = isCorrect 
+        ? '⭕ 正解！' 
+        : '❌ 不正解';
+      document.getElementById('feedbackDetail').innerHTML = isCorrect
+        ? `「${q.correctAnswer}」${q.reading ? `（${q.reading}）` : ''}`
+        : `正解は「${q.correctAnswer}」${q.reading ? `（${q.reading}）` : ''}`;
+      
+      // Show next button
+      nextBtn.classList.add('show');
+      nextBtn.textContent = quizState.currentIndex < quizState.questions.length - 1 
+        ? '次の問題へ →' 
+        : '結果を見る →';
+    }
+
+    // Next question
+    function nextQuestion() {
+      quizState.currentIndex++;
+      
+      if (quizState.currentIndex >= quizState.questions.length) {
+        showResult();
+      } else {
+        showQuestion();
+      }
+    }
+
+    // Show result
+    function showResult() {
+      quizQuestion.classList.remove('active');
+      quizResult.classList.add('active');
+      
+      const total = quizState.questions.length;
+      const score = quizState.score;
+      const percent = Math.round((score / total) * 100);
+      
+      document.getElementById('scoreNum').textContent = score;
+      document.getElementById('scoreTotal').textContent = total;
+      document.getElementById('scorePercent').textContent = `${percent}%`;
+      
+      // Result icon and message
+      let icon, message;
+      if (percent === 100) {
+        icon = '🏆';
+        message = '満点です！完璧な理解度ですね。素晴らしい！';
+      } else if (percent >= 80) {
+        icon = '🎉';
+        message = '素晴らしい成績です！用語をよく理解されています。';
+      } else if (percent >= 60) {
+        icon = '👍';
+        message = '良い調子です！もう少し復習すればさらに上を目指せます。';
+      } else if (percent >= 40) {
+        icon = '📚';
+        message = 'もう少しです！用語集を見直して再挑戦してみましょう。';
+      } else {
+        icon = '💪';
+        message = '用語集でしっかり学習してから再チャレンジしましょう！';
+      }
+      
+      document.getElementById('resultIcon').textContent = icon;
+      document.getElementById('resultMessage').textContent = message;
+    }
+
+    // Show review
+    function showReview() {
+      const reviewEl = document.getElementById('quizReview');
+      reviewEl.classList.toggle('show');
+      
+      if (reviewEl.classList.contains('show')) {
+        const reviewHtml = quizState.answers.map((a, i) => `
+          <div class="quiz-review-item ${a.isCorrect ? 'correct' : 'incorrect'}">
+            <div class="quiz-review-q">Q${i + 1}: ${a.question.substring(0, 50)}...</div>
+            <div class="quiz-review-a">${a.isCorrect ? '⭕' : '❌'} ${a.correctAnswer}</div>
+            ${!a.isCorrect ? `<div class="quiz-review-your">あなたの回答: ${a.userAnswer}</div>` : ''}
+          </div>
+        `).join('');
+        
+        document.getElementById('reviewList').innerHTML = reviewHtml;
+      }
+    }
+
+    // Reset quiz
+    function resetQuiz() {
+      quizResult.classList.remove('active');
+      quizQuestion.classList.remove('active');
+      quizStart.style.display = 'block';
+      document.getElementById('quizReview').classList.remove('show');
+    }
+
+    // Event listeners
+    startQuizBtn.addEventListener('click', startQuiz);
+    nextBtn.addEventListener('click', nextQuestion);
+    retryBtn.addEventListener('click', resetQuiz);
+    reviewBtn.addEventListener('click', showReview);
   </script>
 </body>
 </html>
