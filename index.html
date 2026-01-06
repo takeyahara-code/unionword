@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>労働組合用語集 | Union Glossary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #2d3f5f;
+      --red: #c41e3a;
+      --red-light: #e8394f;
+      --cream: #f8f6f1;
+      --cream-dark: #ebe8e1;
+      --gold: #b8860b;
+      --text: #2c2c2c;
+      --text-light: #5a5a5a;
+      --border: #d4d0c8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: white;
+      padding: 3rem 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 30px,
+          rgba(255,255,255,0.02) 30px,
+          rgba(255,255,255,0.02) 60px
+        );
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red) 0%, var(--gold) 50%, var(--red) 100%);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+    }
+
+    /* Search Section */
+    .search-section {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26, 39, 68, 0.1);
+    }
+
+    .search-box::before {
+      content: '🔍';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+    }
+
+    .search-stats {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Main Layout */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar / TOC */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .toc {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .toc h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--cream-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+    }
+
+    .toc-item {
+      margin-bottom: 0.25rem;
+    }
+
+    .toc-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0.8rem;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+    }
+
+    .toc-link:hover {
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    .toc-link.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    .toc-count {
+      font-size: 0.75rem;
+      background: var(--cream-dark);
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      color: var(--text-light);
+    }
+
+    .toc-link.active .toc-count {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    /* Content */
+    .content {
+      min-width: 0;
+    }
+
+    .category-section {
+      margin-bottom: 2.5rem;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 3px solid var(--navy);
+    }
+
+    .category-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .category-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+    }
+
+    .term-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+
+    .term-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: var(--navy-light);
+    }
+
+    .term-card.highlight {
+      border-left: 4px solid var(--red);
+      background: #fffbf8;
+    }
+
+    .term-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .term-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .term-reading {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      background: var(--cream);
+      padding: 0.15rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .term-badge {
+      font-size: 0.7rem;
+      background: var(--red);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .term-definition {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .term-definition mark {
+      background: #fff3cd;
+      padding: 0 0.2rem;
+      border-radius: 2px;
+    }
+
+    /* No Results */
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-light);
+    }
+
+    .no-results-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      header { padding: 2rem 1rem 1.5rem; }
+      h1 { font-size: 1.8rem; }
+      .search-section { padding: 1rem; }
+      .main-container { padding: 1rem; }
+      .sidebar { 
+        position: static;
+        margin-bottom: 1rem;
+      }
+      .toc {
+        max-height: 200px;
+        overflow-y: auto;
+      }
+    }
+
+    /* Scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>労働組合用語集</h1>
+      <p class="subtitle">Union Glossary — 組合活動に必要な用語を網羅的に解説</p>
+    </div>
+  </header>
+
+  <div class="search-section">
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="用語を検索...（例：春闘、専従、ベア）">
+      </div>
+      <div class="search-stats" id="searchStats">全 <span id="totalCount">0</span> 件の用語</div>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <nav class="toc">
+        <h2>📑 目次</h2>
+        <ul class="toc-list" id="tocList"></ul>
+      </nav>
+    </aside>
+
+    <main class="content" id="content"></main>
+  </div>
+
+  <footer>
+    <p>© 労働組合用語集 | 組合活動の理解と発展のために</p>
+  </footer>
+
+  <script>
+    // 用語データ（既存 + 追加用語）
+    const glossaryData = [
+      // 組織構造
+      { category: "組織構造", term: "単組", reading: "たんそ", definition: "企業単位の労働組合。TUNAGの主な契約主体。意思決定が早い。", isNew: false },
+      { category: "組織構造", term: "支部・分会", reading: "しぶ・ぶんかい", definition: "単組の下部組織。工場や拠点ごとに設置される。物理的な距離がある場合には情報伝達に苦労している場合が多い。", isNew: false },
+      { category: "組織構造", term: "上部団体", reading: "じょうぶだんたい", definition: "単位組合（単組）が加盟する上位組織の総称。「産別」のほかに「地域別組織」や「ナショナルセンター」を含む。他組合との情報交換や相談のために加入し、歩調を合わせて全国・全産業的な統一闘争をすることがある。", isNew: false },
+      { category: "組織構造", term: "企業労連", reading: "きぎょうろうれん", definition: "特定の企業やそのグループ企業内で働く労働者が主体となって結成する企業別労働組合（連合）", isNew: false },
+      { category: "組織構造", term: "産別", reading: "さんべつ", definition: "産業別の労働組合。業界全体の水準を底上げする役割（例：電機連合）。", isNew: false },
+      { category: "組織構造", term: "ナショナルセンター", reading: "なしょなるせんたー", definition: "連合、全労連など、産別を束ねる国内最高の中央組織。", isNew: false },
+      { category: "組織構造", term: "諮問機関", reading: "しもんきかん", definition: "執行機関の機能を高めるために設置。中央段階では、「企画委員会」｢組織運営委員会｣などが相当し、理事会等が業務方針等を決定する際の参考意見を提供。", isNew: false },
+      { category: "組織構造", term: "御組", reading: "おんそ", definition: "会社でいう御社のこと。貴組と言う場合もあり。", isNew: false },
+      { category: "組織構造", term: "労組", reading: "ろうそ", definition: "労働組合の略。", isNew: false },
+      { category: "組織構造", term: "単産", reading: "たんさん", definition: "産業別単一組合の略。同一産業に属する労働者が企業の枠を超えて組織する全国規模の労働組合。産別と同義で使われることもある。", isNew: true },
+      { category: "組織構造", term: "地域ユニオン・合同労組", reading: "ちいきゆにおん・ごうどうろうそ", definition: "企業の枠を超え、地域単位で個人加入できる労働組合。中小企業の労働者や非正規雇用者の受け皿となることが多い。一人でも加入可能。", isNew: true },
+      { category: "組織構造", term: "友好組合", reading: "ゆうこうくみあい", definition: "同じ産別に加盟している組合や、連携・協力関係にある他の労働組合のこと。情報交換や共同行動を行うことがある。", isNew: true },
+      { category: "組織構造", term: "連合体", reading: "れんごうたい", definition: "複数の労働組合が連携して構成する組織。企業グループ労連や地域連合などの形態がある。", isNew: true },
+
+      // 役職・人
+      { category: "役職・人", term: "三役", reading: "さんやく", definition: "委員長・副委員長・書記長のトップ3。会社でいう社長、副社長、COO CFOといった役割。", isNew: false },
+      { category: "役職・人", term: "専従", reading: "せんじゅう", definition: "組合活動を専業とする役員。会社の業務を休み、組合実務のみを行うため給与は組合員から徴収される組合費から支払われる。", isNew: false },
+      { category: "役職・人", term: "非専従", reading: "ひせんじゅう", definition: "会社の業務の傍ら組合活動を行う役員。業務時間外でのアポ調整が一般的。", isNew: false },
+      { category: "役職・人", term: "執行委員", reading: "しっこういいん", definition: "三役とともに、組合本部の運営に携わる。企業の役員である「執行役員」とは異なるので注意。", isNew: false },
+      { category: "役職・人", term: "書記", reading: "しょき", definition: "事務局員。パートや外部採用の人も多い。掲示板の更新や名簿管理などの実務を担うことになる。", isNew: false },
+      { category: "役職・人", term: "支部長・分会長", reading: "しぶちょう・ぶんかいちょう", definition: "組合本部の方針のもと、一定単位の支部を統括、運営する。支部独自での運営や、企画を行っているケースも有る。", isNew: false },
+      { category: "役職・人", term: "代議委員", reading: "だいぎいいん", definition: "一定単位の職場をまとめる。", isNew: false },
+      { category: "役職・人", term: "職場委員", reading: "しょくばいいん", definition: "現場のパイプ役で、労働協約の監視や苦情処理を担う。", isNew: false },
+      { category: "役職・人", term: "会計年度任用職員", reading: "かいけいねんどにんよう", definition: "1会計年度を任期とする自治体の組合における非常勤のパート・アルバイトに近い働き方の方。「会計年度さん」など、職員自体を指す使われ方もある。", isNew: false },
+      { category: "役職・人", term: "組織率", reading: "そしきりつ", definition: "雇用者に占める組合員の割合。組織率が低いと悩むオープンショップの組合も多く存在する", isNew: false },
+      { category: "役職・人", term: "OB・OG", reading: "おーびー・おーじー", definition: "組合役員経験者のこと。退任後も組合活動への助言や、選挙応援などで関わることがある。「元三役」などと呼ばれることも。", isNew: true },
+      { category: "役職・人", term: "青年部・女性部", reading: "せいねんぶ・じょせいぶ", definition: "組合内に設置される世代別・性別の部会。若手育成や女性活躍推進の活動を行う。他に「壮年部」「シニア部」を設置する組合もある。", isNew: true },
+      { category: "役職・人", term: "会計監査", reading: "かいけいかんさ", definition: "組合の会計処理が適正に行われているかを監査する役職。組合員の信頼確保のため重要な役割を担う。", isNew: true },
+      { category: "役職・人", term: "選挙管理委員", reading: "せんきょかんりいいん", definition: "組合役員選挙の公正な実施を管理・監督する委員。立候補受付から開票まで選挙全般を取り仕切る。", isNew: true },
+      { category: "役職・人", term: "顧問・相談役", reading: "こもん・そうだんやく", definition: "組合活動に長年貢献したOB・OGなどが就任する名誉職。助言・指導を行うが、通常は議決権を持たない。", isNew: true },
+
+      // 制度・形態
+      { category: "制度・形態", term: "ユニオンショップ", reading: "ゆにおんしょっぷ", definition: "入社＝強制加入。組合費は給与天引きが一般的。", isNew: false },
+      { category: "制度・形態", term: "オープンショップ", reading: "おーぷんしょっぷ", definition: "加入は任意。自治体などに多い。", isNew: false },
+      { category: "制度・形態", term: "ベースアップ（ベア）", reading: "べーすあっぷ", definition: "賃金水準の底上げ。全社員の給与水準そのものを引き上げるもので、定期昇給とは別で考えることもある。春闘の目玉。", isNew: false },
+      { category: "制度・形態", term: "賃上げ", reading: "ちんあげ", definition: "賃金を引き上げる全般的な概念で、「ベースアップ（ベア）」と「定期昇給（定昇）」が含まれる（参考：2026年春闘においては、5％程度が大半）", isNew: false },
+      { category: "制度・形態", term: "定期昇給（定昇）", reading: "ていきしょうきゅう", definition: "勤続年数や年齢に応じて毎年行われる昇給。賃金テーブル上の昇給であり、ベースアップとは区別される。", isNew: true },
+      { category: "制度・形態", term: "一時金（賞与）", reading: "いちじきん", definition: "いわゆるボーナス。夏季・年末の年2回支給が一般的。月数（基本給の○ヶ月分）で交渉されることが多い。", isNew: true },
+      { category: "制度・形態", term: "時短（労働時間短縮）", reading: "じたん", definition: "労働時間の短縮を求める取り組み。年間総労働時間の削減や、週休3日制の導入などが交渉テーマになることがある。", isNew: true },
+      { category: "制度・形態", term: "クローズドショップ", reading: "くろーずどしょっぷ", definition: "組合員であることが採用条件となる制度。日本では一般的ではないが、海外では見られる形態。", isNew: true },
+      { category: "制度・形態", term: "在籍専従", reading: "ざいせきせんじゅう", definition: "会社に籍を置いたまま組合活動に専念する形態。復職が保障される一方、専従期間は組合から給与が支払われる。", isNew: true },
+      { category: "制度・形態", term: "組合休暇", reading: "くみあいきゅうか", definition: "組合活動のために取得できる特別休暇。労使協定で定められ、大会や研修参加時などに使用される。", isNew: true },
+
+      // 会議・決定
+      { category: "会議・決定", term: "定期大会", reading: "ていきたいかい", definition: "年に一度の最高意思決定機関。大会自体のことを指す。予算や方針を決定。組合によっては年に二度", isNew: false },
+      { category: "会議・決定", term: "執行委員会", reading: "しっこういいんかい", definition: "月1-2回開催。実務の重要事項を協議・決定。中央執行委員会を中執（ちゅうしつ）と呼ぶこともある", isNew: false },
+      { category: "会議・決定", term: "支部長／分会長会・代議委員会", reading: "しぶちょうかい・だいぎいいんかい", definition: "組合の運用における重要事項について、執行部から支部長／分会長や代議委員に説明したり、意見を求めたり、職場委員の意見の吸い上げなどを行う。月1度程度の頻度で開催。この場でTUNAGの導入可否確認や決議を採ることがある。", isNew: false },
+      { category: "会議・決定", term: "臨時大会", reading: "りんじたいかい", definition: "定期大会以外に緊急の議題がある場合に開催される大会。重要な方針変更やストライキ決議などで招集されることがある。", isNew: true },
+      { category: "会議・決定", term: "職場討議", reading: "しょくばとうぎ", definition: "組合方針や要求内容について、職場単位で組合員が話し合うこと。ボトムアップで意見を集約する重要なプロセス。", isNew: true },
+      { category: "会議・決定", term: "三役会議", reading: "さんやくかいぎ", definition: "委員長・副委員長・書記長の三役で行う会議。執行委員会に先立って方針を協議する場となることが多い。", isNew: true },
+      { category: "会議・決定", term: "拡大執行委員会", reading: "かくだいしっこういいんかい", definition: "通常の執行委員会メンバーに加え、支部長や専門委員長なども参加する拡大された会議。重要議題の審議時に開催。", isNew: true },
+      { category: "会議・決定", term: "批准投票", reading: "ひじゅんとうひょう", definition: "執行部が妥結した交渉結果について、組合員全体の承認を得るための投票。民主的な意思決定の根幹。", isNew: true },
+
+      // 交渉・活動
+      { category: "交渉・活動", term: "団体交渉", reading: "だんたいこうしょう", definition: "労働条件について組合と会社が直接交渉すること。", isNew: false },
+      { category: "交渉・活動", term: "春闘（春の取り組み）", reading: "しゅんとう", definition: "毎年春に行われる賃上げ交渉の総称。組合活動の中では一年で最も多忙な時期。", isNew: false },
+      { category: "交渉・活動", term: "確定賃金交渉", reading: "かくていちんぎんこうしょう", definition: "自治体系の組合における、賃上げ交渉で、10~12月に行われる。人事委員会勧告（9〜10月頃）を基に、12月までに自治体当局（首長部局）と団体交渉を行う。企業でいう春闘に相当すると考えて良い。", isNew: false },
+      { category: "交渉・活動", term: "労使協議", reading: "ろうしきょうぎ", definition: "経営課題等について会社と組合が話し合う場。賃金の改善を求める春（1〜3月）と、職場環境などの待遇改善を求める秋（9〜11月）に実施されることが増える。", isNew: false },
+      { category: "交渉・活動", term: "労働協約", reading: "ろうどうきょうやく", definition: "労使交渉の結果、合意した内容を文書化したもの。", isNew: false },
+      { category: "交渉・活動", term: "情宣活動", reading: "じょうせんかつどう", definition: "情報宣伝活動。機関紙の発行など。", isNew: false },
+      { category: "交渉・活動", term: "オルグ", reading: "おるぐ", definition: "組織拡大や意見聴取のための職場訪問。労働組合が組織強化のため組合員に対して教育・指導したり、組織拡充のために勧誘活動をしたりする。組合員の生の声を聞き出し、要求としてまとめていくという側面もあり、職場討議と同義的に使われることもある。", isNew: false },
+      { category: "交渉・活動", term: "大会", reading: "たいかい", definition: "組合の最高意思決定機関（総会）。定期大会という場合も多い。", isNew: false },
+      { category: "交渉・活動", term: "メーデー", reading: "めーでー", definition: "5月1日に行われる労働者の祭典。労働者が権利を要求するために行進や集会などを行い、団結の威力を示す。本来は、ヨーロッパの伝統的な祝祭である五月祭を意味する。", isNew: false },
+      { category: "交渉・活動", term: "ストライキ（スト）", reading: "すとらいき", definition: "労働者が団結して就労を拒否する争議行為。日本では減少傾向だが、交渉の最終手段として権利が保障されている。", isNew: true },
+      { category: "交渉・活動", term: "争議行為", reading: "そうぎこうい", definition: "ストライキ、サボタージュ、ピケッティングなど、労働者が要求実現のために行う集団的行為の総称。", isNew: true },
+      { category: "交渉・活動", term: "要求書", reading: "ようきゅうしょ", definition: "春闘などで組合が会社に提出する賃上げ・労働条件改善の要求をまとめた文書。交渉の出発点となる。", isNew: true },
+      { category: "交渉・活動", term: "回答指定日", reading: "かいとうしていび", definition: "春闘で組合が会社に回答を求める期限日。産別で統一して設定されることが多い（例：3月中旬の水曜日）。", isNew: true },
+      { category: "交渉・活動", term: "集中回答日", reading: "しゅうちゅうかいとうび", definition: "多くの企業が一斉に春闘の回答を出す日。大手企業の回答が中小企業の交渉に影響を与える「波及効果」がある。", isNew: true },
+      { category: "交渉・活動", term: "妥結", reading: "だけつ", definition: "労使交渉で双方が合意に達すること。妥結後は労働協約として文書化される。", isNew: true },
+      { category: "交渉・活動", term: "統一闘争", reading: "とういつとうそう", definition: "産別や上部団体の方針のもと、加盟組合が足並みを揃えて行う交渉・闘争。統一要求、統一スト権確立などがある。", isNew: true },
+      { category: "交渉・活動", term: "署名活動", reading: "しょめいかつどう", definition: "請願や要請のために組合員や市民から署名を集める活動。政策要求や制度改善を求める際に行われる。", isNew: true },
+
+      // 予算・コスト
+      { category: "予算・コスト", term: "組合費", reading: "くみあいひ", definition: "活動の原資。給与の1.5％程度、一人3,000〜4,000円が相場。カツカツで組まれることが多い。（組合員数 × 一人当たりの月額組合費 × 12でおおよそ予算を把握できる）", isNew: false },
+      { category: "予算・コスト", term: "上部団体費", reading: "じょうぶだんたいひ", definition: "上部団体への会費、上納金。組合支出の大きな部分を占めることがある", isNew: false },
+      { category: "予算・コスト", term: "人件費", reading: "じんけんひ", definition: "専従がいる場合にはその給与は組合から支払う。専従ではない組合役員の稼働に対し、手当が支払われることもある。", isNew: false },
+      { category: "予算・コスト", term: "チェック・オフ制", reading: "ちぇっくおふせい", definition: "会社が給与から組合費を天引きする仕組み。", isNew: false },
+      { category: "予算・コスト", term: "闘争資金", reading: "とうそうしきん", definition: "ストライキ時の賃金補填や、争議活動に必要な費用を賄うための積立金。万が一に備えて準備しておく組合も多い。", isNew: true },
+      { category: "予算・コスト", term: "特別会計", reading: "とくべつかいけい", definition: "一般会計とは別に、特定の目的（福利厚生、教育、闘争など）のために設けられる会計区分。", isNew: true },
+      { category: "予算・コスト", term: "役員手当", reading: "やくいんてあて", definition: "非専従役員に対して支払われる活動への対価。時間外や休日の組合活動に対する補償的な意味合いがある。", isNew: true },
+      { category: "予算・コスト", term: "共済掛金", reading: "きょうさいかけきん", definition: "組合が運営する共済制度（慶弔見舞金、医療補助など）の財源として組合員から徴収する費用。", isNew: true },
+
+      // 実務
+      { category: "実務", term: "情宣", reading: "じょうせん", definition: "情報宣伝、の略。機関誌や広報誌を指すこともある。", isNew: false },
+      { category: "実務", term: "機関紙", reading: "きかんし", definition: "組合が発行する広報誌。印刷代・郵送代が莫大。「TUNAGへのリプレイスでコスト削減」のロジックで最も使われる項目。", isNew: false },
+      { category: "実務", term: "組合名簿", reading: "くみあいめいぼ", definition: "組合員の氏名・所属・連絡先などを管理する台帳。加入・脱退・異動の管理に必須。個人情報保護の観点から取り扱いに注意が必要。", isNew: true },
+      { category: "実務", term: "組合掲示板", reading: "くみあいけいじばん", definition: "職場に設置される組合専用の掲示板。情報伝達の重要なツールで、設置場所・サイズなどは労働協約で定められることが多い。", isNew: true },
+      { category: "実務", term: "組合事務所", reading: "くみあいじむしょ", definition: "組合活動の拠点となる事務所。会社から無償貸与されるケースが多く、便宜供与の一つとされる。", isNew: true },
+      { category: "実務", term: "労組ニュース", reading: "ろうそにゅーす", definition: "機関紙より簡易的・速報的な情報伝達手段。号外やチラシ形式で発行されることが多い。", isNew: true },
+      { category: "実務", term: "組合規約", reading: "くみあいきやく", definition: "組合の目的、組織、運営方法などを定めた根本規則。会社でいう定款に相当する。", isNew: true },
+
+      // 権利・法規
+      { category: "権利・法規", term: "36協定", reading: "さぶろくきょうてい", definition: "時間外労働・休日労働に関する労使協定。残業時間の目安を周知し、長時間労働を抑制する。", isNew: false },
+      { category: "権利・法規", term: "不当労働行為", reading: "ふとうろうどうこうい", definition: "使用者が組合活動を妨害する違法行為。組合員への不利益取扱い、団交拒否、支配介入などが該当。労働委員会に救済申立てができる。", isNew: true },
+      { category: "権利・法規", term: "労働委員会", reading: "ろうどういいんかい", definition: "労働争議の調整や不当労働行為の審査を行う行政機関。都道府県と中央に設置されている。", isNew: true },
+      { category: "権利・法規", term: "労働三権", reading: "ろうどうさんけん", definition: "憲法28条で保障される団結権・団体交渉権・団体行動権（争議権）の総称。労働組合活動の法的基盤。", isNew: true },
+      { category: "権利・法規", term: "便宜供与", reading: "べんぎきょうよ", definition: "会社が組合活動のために提供する便宜。組合事務所の貸与、掲示板の設置、在籍専従の承認などがある。", isNew: true },
+      { category: "権利・法規", term: "誠実交渉義務", reading: "せいじつこうしょうぎむ", definition: "使用者が団体交渉に誠実に応じる義務。形式的に応じるだけでなく、実質的な協議を行う必要がある。", isNew: true },
+      { category: "権利・法規", term: "労働組合法", reading: "ろうどうくみあいほう", definition: "労働組合の結成・運営・活動について定めた法律。不当労働行為の禁止や労働委員会制度などを規定している。", isNew: true },
+      { category: "権利・法規", term: "支配介入", reading: "しはいかいにゅう", definition: "使用者が組合の運営に不当に干渉する行為。不当労働行為の一類型で、御用組合の結成支援なども該当する。", isNew: true },
+
+      // 政治・背景
+      { category: "政治・背景", term: "支持政党", reading: "しじせいとう", definition: "産別ごとに支援政党が異なる（立憲・国民・共産など）。", isNew: false },
+      { category: "政治・背景", term: "政治活動", reading: "せいじかつどう", definition: "組合が行う選挙支援や政策要求活動。推薦候補の応援、陳情、ロビイングなどがある。組合員の政治的自由との関係で議論になることも。", isNew: true },
+      { category: "政治・背景", term: "連合", reading: "れんごう", definition: "日本労働組合総連合会の略称。最大のナショナルセンターで、約700万人の組合員を擁する。民主党系政党と近い関係にある。", isNew: true },
+      { category: "政治・背景", term: "全労連", reading: "ぜんろうれん", definition: "全国労働組合総連合の略称。共産党系のナショナルセンター。約100万人の組合員を擁する。", isNew: true },
+      { category: "政治・背景", term: "全労協", reading: "ぜんろうきょう", definition: "全国労働組合連絡協議会の略称。連合・全労連に属さない中立系の労働組合が結集している。", isNew: true },
+
+      // 文化・慣習
+      { category: "文化・慣習", term: "面着", reading: "めんちゃく", definition: "「対面で会う」こと。組合が重視する文化。", isNew: false },
+      { category: "文化・慣習", term: "ご安全に！", reading: "ごあんぜんに", definition: "現場・工場系組合の標準的な挨拶。相手を思いやる言葉。メールでも使われる。（1950年頃、住友金属工業の製鋼所で安全啓発策として導入されたのが始まりとされる。以来、鉄鋼業界から建設業、電力業界など、危険を伴う様々な現場で日常的な挨拶として定着）", isNew: false },
+      { category: "文化・慣習", term: "旗開き、旗揚げ", reading: "はたびらき・はたあげ", definition: "新年に組合旗・党旗を飾って、団結を誓い合う懇親会のこと。春闘のスタートと位置づけられたり、政治家が来賓として参加する重要な場になることもある。赤旗開きということもある。", isNew: false },
+      { category: "文化・慣習", term: "団結", reading: "だんけつ", definition: "労働者が一致協力して行動すること。組合活動の根幹をなす概念で、「団結ガンバロー」の掛け声で使われる。", isNew: true },
+      { category: "文化・慣習", term: "ガンバロー三唱", reading: "がんばろーさんしょう", definition: "集会の最後に「団結ガンバロー」を三回唱和する慣習。拳を突き上げながら行うことが多い。", isNew: true },
+      { category: "文化・慣習", term: "組合旗", reading: "くみあいき", definition: "組合のシンボルとなる旗。集会やデモ行進で掲げられる。赤地に組合名が入ったデザインが多い。", isNew: true },
+      { category: "文化・慣習", term: "鉢巻・腕章", reading: "はちまき・わんしょう", definition: "団体交渉や集会で着用する組合のシンボル。赤や白が多く、「要求貫徹」などのスローガンが書かれる。", isNew: true },
+      { category: "文化・慣習", term: "労働歌", reading: "ろうどうか", definition: "労働運動で歌われる歌。「インターナショナル」「がんばろう」「聞け万国の労働者」などが有名。", isNew: true },
+      { category: "文化・慣習", term: "決起集会", reading: "けっきしゅうかい", definition: "春闘や重要な交渉の前に、組合員の士気を高めるために開催される集会。要求内容の確認や団結の強化が目的。", isNew: true }
+    ];
+
+    // カテゴリアイコンマッピング
+    const categoryIcons = {
+      "組織構造": "🏛️",
+      "役職・人": "👥",
+      "制度・形態": "📋",
+      "会議・決定": "🗳️",
+      "交渉・活動": "🤝",
+      "予算・コスト": "💰",
+      "実務": "📝",
+      "権利・法規": "⚖️",
+      "政治・背景": "🏛️",
+      "文化・慣習": "🎌"
+    };
+
+    // カテゴリ順序
+    const categoryOrder = [
+      "組織構造", "役職・人", "制度・形態", "会議・決定", 
+      "交渉・活動", "予算・コスト", "実務", "権利・法規", 
+      "政治・背景", "文化・慣習"
+    ];
+
+    // DOM要素
+    const searchInput = document.getElementById('searchInput');
+    const totalCount = document.getElementById('totalCount');
+    const searchStats = document.getElementById('searchStats');
+    const tocList = document.getElementById('tocList');
+    const content = document.getElementById('content');
+
+    // 初期表示
+    totalCount.textContent = glossaryData.length;
+
+    // 目次を生成
+    function generateTOC(data) {
+      const categoryCounts = {};
+      data.forEach(item => {
+        categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
+      });
+
+      tocList.innerHTML = categoryOrder
+        .filter(cat => categoryCounts[cat])
+        .map(category => `
+          <li class="toc-item">
+            <a href="#${category}" class="toc-link" data-category="${category}">
+              <span>${categoryIcons[category]} ${category}</span>
+              <span class="toc-count">${categoryCounts[category]}</span>
+            </a>
+          </li>
+        `).join('');
+    }
+
+    // コンテンツを生成
+    function generateContent(data, searchTerm = '') {
+      const grouped = {};
+      data.forEach(item => {
+        if (!grouped[item.category]) grouped[item.category] = [];
+        grouped[item.category].push(item);
+      });
+
+      if (Object.keys(grouped).length === 0) {
+        content.innerHTML = `
+          <div class="no-results">
+            <div class="no-results-icon">🔍</div>
+            <p>「${searchTerm}」に一致する用語が見つかりませんでした。</p>
+          </div>
+        `;
+        return;
+      }
+
+      content.innerHTML = categoryOrder
+        .filter(category => grouped[category])
+        .map(category => `
+          <section class="category-section" id="${category}">
+            <div class="category-header">
+              <span class="category-icon">${categoryIcons[category]}</span>
+              <h2 class="category-title">${category}</h2>
+            </div>
+            ${grouped[category].map(item => `
+              <div class="term-card ${searchTerm ? 'highlight' : ''}">
+                <div class="term-header">
+                  <span class="term-name">${highlightText(item.term, searchTerm)}</span>
+                  ${item.reading ? `<span class="term-reading">${item.reading}</span>` : ''}
+                  ${item.isNew ? '<span class="term-badge">追加</span>' : ''}
+                </div>
+                <p class="term-definition">${highlightText(item.definition, searchTerm)}</p>
+              </div>
+            `).join('')}
+          </section>
+        `).join('');
+    }
+
+    // テキストハイライト
+    function highlightText(text, term) {
+      if (!term) return text;
+      const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    function escapeRegex(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // 検索機能
+    function search(term) {
+      const normalizedTerm = term.toLowerCase().trim();
+      
+      if (!normalizedTerm) {
+        generateTOC(glossaryData);
+        generateContent(glossaryData);
+        searchStats.innerHTML = `全 <span id="totalCount">${glossaryData.length}</span> 件の用語`;
+        return;
+      }
+
+      const filtered = glossaryData.filter(item => 
+        item.term.toLowerCase().includes(normalizedTerm) ||
+        (item.reading && item.reading.toLowerCase().includes(normalizedTerm)) ||
+        item.definition.toLowerCase().includes(normalizedTerm)
+      );
+
+      generateTOC(filtered);
+      generateContent(filtered, term);
+      searchStats.innerHTML = `「${term}」の検索結果: <strong>${filtered.length}</strong> 件`;
+    }
+
+    // イベントリスナー
+    searchInput.addEventListener('input', (e) => {
+      search(e.target.value);
+    });
+
+    // 目次クリックでアクティブ状態を更新
+    tocList.addEventListener('click', (e) => {
+      const link = e.target.closest('.toc-link');
+      if (link) {
+        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+
+    // スクロールで目次のアクティブ状態を更新
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const category = entry.target.id;
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.toggle('active', link.dataset.category === category);
+          });
+        }
+      });
+    }, { rootMargin: '-100px 0px -70% 0px' });
+
+    // 初期化
+    generateTOC(glossaryData);
+    generateContent(glossaryData);
+
+    // セクションを監視
+    setTimeout(() => {
+      document.querySelectorAll('.category-section').forEach(section => {
+        observer.observe(section);
+      });
+    }, 100);
+  </script>
+</body>
+</html>
